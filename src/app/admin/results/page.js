@@ -2,13 +2,15 @@ import connectToDatabase from '@/lib/mongodb';
 import Result from '@/models/Result';
 import Link from 'next/link';
 import AddResultForm from './AddResultForm';
+import ResultActions from './ResultActions';
 
 export const dynamic = 'force-dynamic';
 
 export default async function AdminResults({ searchParams }) {
+  const resolvedSearchParams = await searchParams;
   await connectToDatabase();
   
-  const page = parseInt(searchParams.page) || 1;
+  const page = parseInt(resolvedSearchParams.page) || 1;
   const limit = 10;
   const skip = (page - 1) * limit;
   
@@ -37,12 +39,13 @@ export default async function AdminResults({ searchParams }) {
                 <th>Marks Obtained</th>
                 <th>Total Marks</th>
                 <th>Status</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {results.length === 0 && (
                 <tr>
-                  <td colSpan="6" style={{textAlign: 'center', padding: '20px'}}>No results found.</td>
+                  <td colSpan="7" style={{textAlign: 'center', padding: '20px'}}>No results found.</td>
                 </tr>
               )}
               {results.map(res => (
@@ -56,6 +59,9 @@ export default async function AdminResults({ searchParams }) {
                     <span style={{color: res.status === 'Pass' ? '#00a859' : '#ef4444', fontWeight: '600'}}>
                       {res.status}
                     </span>
+                  </td>
+                  <td>
+                    <ResultActions result={JSON.parse(JSON.stringify(res))} />
                   </td>
                 </tr>
               ))}

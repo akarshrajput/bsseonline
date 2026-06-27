@@ -1,13 +1,15 @@
 import connectToDatabase from '@/lib/mongodb';
 import Register from '@/models/Register';
 import Link from 'next/link';
+import RegistrationActions from './RegistrationActions';
 
 export const dynamic = 'force-dynamic';
 
 export default async function AdminRegistrations({ searchParams }) {
+  const resolvedSearchParams = await searchParams;
   await connectToDatabase();
   
-  const page = parseInt(searchParams.page) || 1;
+  const page = parseInt(resolvedSearchParams.page) || 1;
   const limit = 10;
   const skip = (page - 1) * limit;
   
@@ -34,12 +36,13 @@ export default async function AdminRegistrations({ searchParams }) {
               <th>Class</th>
               <th>Mobile</th>
               <th>City/District</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {registrations.length === 0 && (
               <tr>
-                <td colSpan="6" style={{textAlign: 'center', padding: '20px'}}>No registrations found.</td>
+                <td colSpan="7" style={{textAlign: 'center', padding: '20px'}}>No registrations found.</td>
               </tr>
             )}
             {registrations.map(reg => (
@@ -50,6 +53,9 @@ export default async function AdminRegistrations({ searchParams }) {
                 <td>{reg.studentClass}</td>
                 <td>{reg.mobile}</td>
                 <td>{reg.cityDistrict}, {reg.state}</td>
+                <td>
+                  <RegistrationActions registration={JSON.parse(JSON.stringify(reg))} />
+                </td>
               </tr>
             ))}
           </tbody>

@@ -815,3 +815,74 @@ a {
 .dot.active {
   background-color: white;
 }
+
+/* Admin Actions & Modal UI */
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+.action-btn:hover { background-color: #f0f0f0; }
+.edit-btn { color: #3b429f; }
+.delete-btn { color: #ef4444; }
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+}
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.edit-form input, .edit-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+.cancel-btn {
+  padding: 8px 16px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.save-btn {
+  padding: 8px 16px;
+  background: #3b429f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
