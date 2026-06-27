@@ -12,6 +12,7 @@ export default function AddResultForm() {
     totalMarks: '',
     status: 'Pass'
   });
+  const [pdfFile, setPdfFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
 
@@ -21,14 +22,20 @@ export default function AddResultForm() {
     setSuccess('');
     
     try {
+      const formPayload = new FormData();
+      Object.keys(formData).forEach(key => formPayload.append(key, formData[key]));
+      if (pdfFile) {
+        formPayload.append('pdfFile', pdfFile);
+      }
+
       const res = await fetch('/api/admin/results', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: formPayload
       });
       const data = await res.json();
       if (data.success) {
         setFormData({ rollNumber: '', dateOfBirth: '', studentName: '', marksObtained: '', totalMarks: '', status: 'Pass' });
+        setPdfFile(null);
         setSuccess('Result added successfully!');
         router.refresh();
       } else {
@@ -57,6 +64,10 @@ export default function AddResultForm() {
           <option value="Pass">Pass</option>
           <option value="Fail">Fail</option>
         </select>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+          <label style={{ fontSize: '12px', color: '#666' }}>Upload Certificate (PDF)</label>
+          <input type="file" accept="application/pdf" onChange={e => setPdfFile(e.target.files[0])} className="admin-login-input" style={{marginBottom: 0, padding: '7px'}} />
+        </div>
         <div style={{ gridColumn: 'span 2', textAlign: 'right' }}>
           <button type="submit" className="admin-login-btn" style={{width: 'auto', padding: '10px 30px'}} disabled={loading}>
             {loading ? 'Adding...' : 'Add Result'}

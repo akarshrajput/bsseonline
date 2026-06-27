@@ -89,6 +89,14 @@ export default function ResultPage() {
               <div><strong>Marks Obtained:</strong> {resultData.marksObtained}</div>
               <div><strong>Total Marks:</strong> {resultData.totalMarks}</div>
             </div>
+            {resultData.pdfUrl && (
+              <div style={{ marginTop: '30px' }}>
+                <h4 style={{ color: '#333', marginBottom: '10px' }}>Result Certificate:</h4>
+                <object data={resultData.pdfUrl} type="application/pdf" width="100%" height="600px" style={{ border: '1px solid #ccc', borderRadius: '4px' }}>
+                  <p>Your browser does not support PDFs. <a href={resultData.pdfUrl} target="_blank" rel="noopener noreferrer">Download the PDF</a>.</p>
+                </object>
+              </div>
+            )}
           </div>
         )}
       </div>

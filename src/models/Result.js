@@ -6,7 +6,8 @@ const ResultSchema = new mongoose.Schema({
   studentName: { type: String, required: true },
   marksObtained: { type: Number, required: true },
   totalMarks: { type: Number, required: true },
-  status: { type: String, required: true, default: 'Pass' }
+  status: { type: String, required: true, default: 'Pass' },
+  pdfUrl: { type: String, default: null }
 }, { timestamps: true });
 
 export default mongoose.models.Result || mongoose.model('Result', ResultSchema);

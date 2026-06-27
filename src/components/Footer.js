@@ -15,7 +15,7 @@ export default function Footer() {
           </p>
           <p className="footer-email">
             Email:<br/>
-            <a href="mailto:info@bsseonline.com">info@bsseonline.com</a>
+            <a href="mailto:info@bsseonline.co.in">info@bsseonline.co.in</a>
           </p>
         </div>
 

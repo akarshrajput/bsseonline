@@ -43,22 +43,22 @@ export default function Home() {
           </div>
 
           {/* Card 4 */}
-          <div className="feature-card border-blue">
+          <Link href="/result" className="feature-card border-blue" style={{textDecoration: 'none'}}>
             <div className="feature-icon-wrapper bg-blue">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             </div>
             <h3 className="text-blue">Result</h3>
-            <p>Check your result</p>
-          </div>
+            <p style={{color: '#666'}}>Check your result</p>
+          </Link>
 
           {/* Card 5 */}
-          <div className="feature-card border-orange">
+          <Link href="/online-registration" className="feature-card border-orange" style={{textDecoration: 'none'}}>
             <div className="feature-icon-wrapper bg-orange">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
             </div>
             <h3 className="text-orange">Online Registration</h3>
-            <p>Apply online registration.</p>
-          </div>
+            <p style={{color: '#666'}}>Apply online registration.</p>
+          </Link>
 
           {/* Card 6 */}
           <div className="feature-card border-dark">
@@ -76,7 +76,7 @@ export default function Home() {
         <h2>Board Of Senior Secondary Education</h2>
         <h3>उच्चतर माध्यमिक शिक्षा परिषद</h3>
         <p>(AN ENTERPRISES UNDER MSMED ACT 2006) MINISTRY OF MSME GOVT. OF INDIA, NEW DELHI</p>
-        <Link href="/about" className="read-more-btn">READ MORE</Link>
+        <Link href="/result" className="read-more-btn">READ MORE</Link>
       </section>
 
       {/* Courses Section */}
@@ -86,7 +86,10 @@ export default function Home() {
           
           {/* Course 1 */}
           <div className="course-card">
-            <div className="course-content">
+            <div className="course-image">
+              <Image src="/c_highschool.png" alt="High School" width={300} height={150} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
+            <div className="course-content with-image">
               <h3>High School(10th)</h3>
             </div>
             <div className="course-footer">
@@ -96,7 +99,10 @@ export default function Home() {
 
           {/* Course 2 */}
           <div className="course-card">
-            <div className="course-content">
+            <div className="course-image">
+              <Image src="/c_seniorsec.png" alt="Senior Secondary" width={300} height={150} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
+            <div className="course-content with-image">
               <h3>Senior Secondary<br/>School</h3>
             </div>
             <div className="course-footer">
@@ -108,7 +114,7 @@ export default function Home() {
           <div className="course-card">
             <div className="course-image">
               <Image 
-                src="/paramedical_course_1782533258556.png" 
+                src="/c_paramedical.png" 
                 alt="Paramedical" 
                 width={300} 
                 height={150} 
@@ -127,7 +133,7 @@ export default function Home() {
           <div className="course-card">
             <div className="course-image">
               <Image 
-                src="/automobile_course_1782533277274.png" 
+                src="/c_automobile.png" 
                 alt="Automobile" 
                 width={300} 
                 height={150} 
@@ -144,7 +150,10 @@ export default function Home() {
 
           {/* Course 5 */}
           <div className="course-card">
-            <div className="course-content">
+            <div className="course-image">
+              <Image src="/c_iti.png" alt="ITI" width={300} height={150} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
+            <div className="course-content with-image">
               <h3>ITI</h3>
             </div>
             <div className="course-footer">
@@ -154,7 +163,10 @@ export default function Home() {
 
           {/* Course 6 */}
           <div className="course-card">
-            <div className="course-content">
+            <div className="course-image">
+              <Image src="/c_diploma.png" alt="Diploma" width={300} height={150} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
+            <div className="course-content with-image">
               <h3>Diploma |<br/>Management</h3>
             </div>
             <div className="course-footer">
@@ -164,7 +176,10 @@ export default function Home() {
 
           {/* Course 7 */}
           <div className="course-card">
-            <div className="course-content">
+            <div className="course-image">
+              <Image src="/c_pharmacy.png" alt="Pharmacy" width={300} height={150} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
+            <div className="course-content with-image">
               <h3>Pharmacy</h3>
             </div>
             <div className="course-footer">
@@ -174,7 +189,10 @@ export default function Home() {
 
           {/* Course 8 */}
           <div className="course-card">
-            <div className="course-content">
+            <div className="course-image">
+              <Image src="/c_arts.png" alt="12 ARTS" width={300} height={150} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
+            <div className="course-content with-image">
               <h3>12 ARTS</h3>
             </div>
             <div className="course-footer">

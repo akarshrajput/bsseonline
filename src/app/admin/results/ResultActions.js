@@ -15,6 +15,8 @@ export default function ResultActions({ result }) {
     status: result.status
   });
 
+  const [pdfFile, setPdfFile] = useState(null);
+
   const handleDelete = async () => {
     if (confirm('Are you sure you want to delete this result?')) {
       setIsDeleting(true);
@@ -31,10 +33,15 @@ export default function ResultActions({ result }) {
   const handleEdit = async (e) => {
     e.preventDefault();
     try {
+      const formPayload = new FormData();
+      Object.keys(formData).forEach(key => formPayload.append(key, formData[key]));
+      if (pdfFile) {
+        formPayload.append('pdfFile', pdfFile);
+      }
+
       await fetch(`/api/results/${result._id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: formPayload
       });
       setShowModal(false);
       router.refresh();
@@ -68,6 +75,10 @@ export default function ResultActions({ result }) {
                 <option value="Pass">Pass</option>
                 <option value="Fail">Fail</option>
               </select>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                <label style={{ fontSize: '12px', color: '#666' }}>Upload New Certificate (Optional)</label>
+                <input type="file" accept="application/pdf" onChange={e => setPdfFile(e.target.files[0])} />
+              </div>
               <div className="modal-actions">
                 <button type="button" onClick={() => setShowModal(false)} className="cancel-btn">Cancel</button>
                 <button type="submit" className="save-btn">Save Changes</button>
